@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="app" extends="struts-default">
+	
+		<action name="app_showTable" class="appAction" method="showTable">
+			<result name="showTable">/app/index.jsp</result>
+		</action>
+	
+		<action name="app_list" class="appAction" method="list">
+			<result name="list">/app/detail/caidan.jsp</result>
+		</action>
+		
+		<action name="foodDetail" class="appAction" method="foodDetail">
+			<result name="foodDetail">/app/detail/caixiangxi.jsp</result>
+		</action>
+		
+		<action name="searchByType" class="appAction" method="searchByType">
+			<result name="searchByType">/app/detail/caidan.jsp</result>
+		</action>
+		
+		<action name="search" class="appAction" method="search">
+			<result name="search">/app/detail/caidan.jsp</result>
+		</action>
+		
+		<action name="put" class="appAction" method="put">
+			<result name="put">/app/detail/clientCart.jsp</result>
+		</action>
+		
+		<action name="order" class="appAction" method="order">
+			<result name="order">/app/detail/clientOrderList.jsp</result>
+		</action>
+		
+		<action name="pay" class="appAction" method="pay">
+			<result name="pay">/app/detail/payorder.jsp</result>
+		</action>
+		
+		<action name="payOrder" class="appAction" method="payOrder">
+		</action>
+		
+		<action name="callBack" class="appAction" method="callBack">
+			<result name="callBack">/app/detail/middle.jsp</result>
+		</action>
+	</package>
+</struts>

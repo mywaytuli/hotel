@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="order" namespace="/sys" extends="struts-default">
+
+		
+		<action name="order_list" class="orderAction"  method="list" >
+			<result name="list">/sys/order/order_list.jsp</result>
+		</action>
+		
+		<action name="order_detail" class="orderAction"  method="detail" >
+			<result name="detail">/sys/order/order_detail.jsp</result>
+		</action>
+		
+		<action name="order_pay" class="orderAction"  method="pay" >
+			<result name="pay" type="redirectAction">order_list</result>
+		</action>
+		
+		<action name="order_delete" class="orderAction"  method="delete" >
+			<result name="delete" type="redirectAction">order_list</result>
+		</action>
+
+	</package>
+
+</struts>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="user" namespace="/sys" extends="struts-default">
+
+		<action name="user_list" class="userAction"  method="list" >
+			<result name="list">/sys/user/user_list.jsp</result>
+		</action>
+		
+		<action name="user_delete" class="userAction"  method="delete" >
+			<result name="delete" type="redirectAction">user_list</result>
+		</action>
+
+		<action name="user_search" class="userAction"  method="search">
+			<result name="search" >/sys/user/user_list.jsp</result>
+		</action>
+		
+		<action name="user_order" class="userAction"  method="order">
+			<result name="order" >/sys/user/user_order.jsp</result>
+		</action>
+		
+		<action name="user_orderDetail" class="userAction"  method="orderDetail" >
+			<result name="orderDetail">/sys/user/user_orderDetail.jsp</result>
+		</action>
+		
+		<action name="user_orderPay" class="userAction"  method="orderPay" >
+			<result name="orderPay" type="redirectAction">user_order</result>
+		</action>
+		
+		<action name="user_orderDelete" class="userAction"  method="orderDelete" >
+			<result name="orderDelete" type="redirectAction">user_order</result>
+		</action>
+		
+		
+		<action name="user_exportExcel" class="userAction"  method="exportExcel">
+			
+		</action>
+		
+	</package>
+
+</struts>

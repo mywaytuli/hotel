@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="foodtype" namespace="/sys" extends="struts-default">
+
+		<!-- action实例交给spring容器创建 -->
+		<action name="foodtype_list" class="foodTypeAction"  method="list" >
+			<result name="list">/sys/foodtype/foodtype_list.jsp</result>
+		</action>
+		
+		<action name="foodtype_add" class="foodTypeAction"  method="add">
+			<!-- 防止表单重复提交，用重定向 -->
+			<result name="add" type="redirectAction">foodtype_list</result>
+		</action>
+		
+		<action name="foodtype_updateView" class="foodTypeAction"  method="updateView">
+			<result name="updateView">/sys/foodtype/foodtype_update.jsp</result>
+		</action>
+		
+		<action name="foodtype_update" class="foodTypeAction"  method="update">
+			<result name="update" type="redirectAction">foodtype_list</result>
+		</action>
+		
+		<action name="foodtype_delete" class="foodTypeAction"  method="delete">
+			<result name="delete" type="redirectAction">foodtype_list</result>
+		</action>
+		
+		<action name="foodtype_search" class="foodTypeAction"  method="search">
+			<result name="search" >/sys/foodtype/foodtype_list.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

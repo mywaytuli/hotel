@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="food" namespace="/sys" extends="struts-default">
+
+		<!-- action实例交给spring容器创建 -->
+		<action name="food_list" class="foodAction"  method="list" >
+			<result name="list">/sys/food/food_list.jsp</result>
+		</action>
+		
+		<action name="food_add" class="foodAction"  method="add">
+			<!-- 限制运行上传的文件的类型 -->
+			<interceptor-ref name="defaultStack">
+				
+				<!-- 限制运行的文件的扩展名 -->
+				<param name="fileUpload.allowedExtensions">txt,jpg,jar</param>
+				
+			</interceptor-ref>
+			<result name="add" type="redirectAction">food_list</result>
+		</action>
+		
+		<action name="food_updateView" class="foodAction"  method="updateView">
+			<result name="updateView">/sys/food/food_update.jsp</result>
+		</action>
+		
+		<action name="food_update" class="foodAction"  method="update">
+			<result name="update" type="redirectAction">food_list</result>
+		</action>
+		
+		<action name="food_delete" class="foodAction"  method="delete">
+			<result name="delete" type="redirectAction">food_list</result>
+		</action>
+		
+		<action name="food_search" class="foodAction"  method="search">
+			<result name="search" >/sys/food/food_list.jsp</result>
+		</action>
+		
+		<action name="food_exportExcel" class="foodAction"  method="exportExcel">
+			
+		</action>
+
+	</package>
+
+</struts>

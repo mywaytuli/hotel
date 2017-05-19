@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="dinnertable" namespace="/sys" extends="struts-default">
+
+		<!-- action实例交给spring容器创建 -->
+		<action name="dinnertable_list" class="dinnerTableAction"  method="list" >
+			<result name="list">/sys/dinnertable/dinnertable_list.jsp</result>
+		</action>
+		 
+		<action name="dinnertable_add" class="dinnerTableAction"  method="add">
+			<result name="add" type="redirectAction">dinnertable_list</result>
+		</action>
+		
+		<action name="dinnertable_delete" class="dinnerTableAction"  method="delete">
+			<result name="delete" type="redirectAction">dinnertable_list</result>
+		</action>
+		
+		<action name="dinnertable_search" class="dinnerTableAction"  method="search">
+			<result name="search" >/sys/dinnertable/dinnertable_list.jsp</result>
+		</action>
+		
+		<action name="tableDetail_list" class="dinnerTableAction"  method="tableDetail_list">
+			<result name="tableDetail_list" >/sys/dinnertable/tableDetail_list.jsp</result>
+		</action>
+		
+		<action name="tableDetail_delete" class="dinnerTableAction"  method="tableDetail_delete">
+			<result name="tableDetail_delete" type="redirectAction">tableDetail_list</result>
+		</action>
+		
+		<action name="dinnertable_middle" class="dinnerTableAction"  method="middle">
+			<result name="middle">/sys/dinnertable/middle.jsp</result>
+		</action>
+		
+		<action name="dinnertable_order" class="dinnerTableAction"  method="order">
+			<result name="order" type="redirectAction">dinnertable_list</result>
+		</action>
+		
+	</package>
+
+</struts>

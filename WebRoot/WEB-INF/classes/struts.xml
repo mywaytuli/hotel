@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+		
+		<include file="cn/ahut/sys/foodtype/conf/foodType-struts.xml"></include>
+		<include file="cn/ahut/sys/food/conf/food-struts.xml"></include>
+		<include file="cn/ahut/sys/dinnertable/conf/dinnerTable-struts.xml"></include>
+		<include file="cn/ahut/sys/order/conf/order-struts.xml"></include>
+		<include file="cn/ahut/sys/user/conf/user-struts.xml"></include>
+		<include file="cn/ahut/app/conf/app-struts.xml"></include>
+		<include file="cn/ahut/app2/conf/app2-struts.xml"></include>
+		<include file="cn/ahut/login/conf/login-struts.xml"></include>
+	
+</struts>

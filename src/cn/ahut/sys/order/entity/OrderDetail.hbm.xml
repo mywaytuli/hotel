@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.ahut.sys.order.entity">
+
+	<class name="OrderDetail" table="orderDetail" >
+		<id name="id" column="id" type="java.lang.String" length="32">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<!-- 多对一 -->
+		<many-to-one name="order" column="orderId" class="Order"></many-to-one>
+		<many-to-one name="food" column="food_id" class="cn.ahut.sys.food.entity.Food"></many-to-one>
+		<property name="foodCount" ></property>
+	</class>
+
+</hibernate-mapping>
+
+
+

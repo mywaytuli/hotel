@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.ahut.sys.order.entity">
+
+	<class name="Order" table="orders" dynamic-insert="true" dynamic-update="true">
+		<id name="id" column="id" type="java.lang.String" length="32">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<!-- 多对一 -->
+		<many-to-one name="dinnerTable" column="table_id" class="cn.ahut.sys.dinnertable.entity.DinnerTable"></many-to-one>
+		<property name="orderDate" ></property>
+		<property name="eatDate" ></property>
+		<property name="totalPrice" ></property>
+		<property name="orderStatus" ></property>
+		<many-to-one name="user" column="user_id" class="cn.ahut.login.entity.User"></many-to-one>
+	</class>
+
+</hibernate-mapping>
+
+
+

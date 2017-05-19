@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<package name="ajax2" extends="json-default" namespace="/">
+	<!-- action实例交给spring容器创建 -->
+	<action name="reg_account" class="loginAction"  method="reg_account" >
+		<result  name="success" type="json">
+			<param name="root">return_map</param>
+		</result>
+	</action>
+	
+	<action name="doModifyInfo_2" class="loginAction"  method="doModifyInfo_2" >
+		<result  name="success" type="json">
+			<param name="root">return_map</param>
+		</result>
+	</action>
+	</package>
+	
+	<package name="login"  extends="struts-default">
+
+		<!-- action实例交给spring容器创建 -->
+		<action name="login_login" class="loginAction"  method="login">
+			<result name="login1">/sys/index.jsp</result>
+			<result name="login2">/info/datepic.jsp</result>
+			<result name="login3">/login.jsp</result>
+		</action>
+		
+		<action name="register" class="loginAction" method="register">
+			<result name="register">/middle.jsp</result>
+		</action>
+		
+		<action name="exit" class="loginAction" method="exit">
+			<result name="exit">/login.jsp</result>
+		</action>
+		
+		<action name="doModifyInfo_1" class="loginAction" method="doModifyInfo_1">
+			<result name="doModifyInfo_1">/info/doModifyInfo_1.jsp</result>
+		</action>
+		
+		<action name="modifyInfo_1" class="loginAction" method="modifyInfo_1">
+			<result name="modifyInfo_1">/info/modifyInfo_1.jsp</result>
+		</action>
+		
+		<action name="modifyInfo_2" class="loginAction" method="modifyInfo_2">
+			<result name="modifyInfo_2">/info/modifyInfo_2.jsp</result>
+		</action>
+		
+		<action name="doModifyInfo_3" class="loginAction" method="doModifyInfo_3">
+			<result name="doModifyInfo_3">/info/doModifyInfo_3.jsp</result>
+		</action>
+		
+		<action name="modifyInfo_3pay" class="loginAction" method="modifyInfo_3pay">
+			<result name="modifyInfo_3pay">/app/detail/payorder.jsp</result>
+		</action>
+		
+		<action name="modifyInfo_3detail" class="loginAction" method="modifyInfo_3detail">
+			<result name="modifyInfo_3detail">/info/modifyInfo_3.jsp</result>
+		</action>
+		
+		<action name="modifyInfo_3delete" class="loginAction" method="modifyInfo_3delete">
+			<result name="modifyInfo_3delete" type="redirectAction">doModifyInfo_3</result>
+		</action>
+		
+	</package>
+
+</struts>
