@@ -1,92 +1,88 @@
--- ´´½¨Êı¾İ¿â
-CREATE DATABASE hotel CHARACTER SET utf8;
-USE hotel;
+DROP TABLE IF EXISTS admin;
+DROP TABLE IF EXISTS dinnerTable;
+DROP TABLE IF EXISTS foodType;
+DROP TABLE IF EXISTS food;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS orderDetail;
+DROP TABLE IF EXISTS tableDetail;
 
-
-drop table if exists admin;
-drop table if exists dinnerTable;
-drop table if exists foodType;
-drop table if exists food;
-drop table if exists orders;
-drop table if exists orderDetail;
-
--- 1.ÓÃ»§±í
+-- 1.ç”¨æˆ·è¡¨
 CREATE TABLE users(
-	id VARCHAR(32) PRIMARY KEY NOT NULL, -- Ö÷¼ü
-	userName VARCHAR(20) NOT NULL,    -- ĞÕÃû
-	account VARCHAR(20) NOT NULL,	--ÕËºÅ
-	role VARCHAR(20) NOT NULL,	--½ÇÉ«
-	mobile VARCHAR(20) NOT NULL,	--µç»°
-	pwd VARCHAR(100) NOT NULL,      -- ÃÜÂë
-	address	VARCHAR(20) NOT NULL	--µØÖ·
+	id VARCHAR(32) PRIMARY KEY NOT NULL, -- ä¸»é”®
+	userName VARCHAR(20),    -- å§“å
+	account VARCHAR(20),	-- è´¦å·
+	role VARCHAR(20),	-- è§’è‰²
+	mobile VARCHAR(20),	-- ç”µè¯
+	pwd VARCHAR(100),      -- å¯†ç 
+	address	VARCHAR(20)	-- åœ°å€
 );
 
 
 
--- 2. ²Í×À±í
+-- 2. é¤æ¡Œè¡¨
 CREATE TABLE dinnerTable(
-   id varchar(32) PRIMARY KEY NOT NULL,  -- ²Í×ÀÖ÷¼ü
-   tableName VARCHAR(20) NOT NULL	  -- ²Í×ÀÃû
+   id VARCHAR(32) PRIMARY KEY NOT NULL,  -- é¤æ¡Œä¸»é”®
+   tableName VARCHAR(20) NOT NULL	  -- é¤æ¡Œå
  
 );
 
 
--- 3. ²Í×ÀÃ÷Ï¸±í
+-- 3. é¤æ¡Œæ˜ç»†è¡¨
 CREATE TABLE tableDetail(
-   id VARCHAR(32) PRIMARY KEY NOT NULL,  -- Ö÷¼ü
-   table_id VARCHAR(32) NOT NULL,	 -- ²Í×À±àºÅ
-   eatDate VARCHAR(40)   NOT NULL        -- ¾Í²ÍÊ±¼ä
+   id VARCHAR(32) PRIMARY KEY NOT NULL,  -- ä¸»é”®
+   table_id VARCHAR(32) NOT NULL,	 -- é¤æ¡Œç¼–å·
+   eatDate VARCHAR(40)   NOT NULL        -- å°±é¤æ—¶é—´
 );
 
 
--- 4. ²ËÀà±ğ±í
+-- 4. èœç±»åˆ«è¡¨
 CREATE TABLE foodType(
-    id varchar(32) PRIMARY KEY NOT NULL,  -- Àà±ğÖ÷¼ü
-    typeName VARCHAR(20) NOT NULL	-- Àà±ğÃû³Æ
+    id VARCHAR(32) PRIMARY KEY NOT NULL,  -- ç±»åˆ«ä¸»é”®
+    typeName VARCHAR(20) NOT NULL	-- ç±»åˆ«åç§°
 );
 
 
--- 5. ²ËÆ·ÖÖ±í
+-- 5. èœå“ç§è¡¨
 CREATE TABLE food(
-  id varchar(32) PRIMARY KEY NOT NULL,  -- Ö÷¼ü
-  foodName VARCHAR(20) NOT NULL,	 -- ²ËÃû³Æ
-  foodType_id VARCHAR(32) NOT NULL, 	 -- ËùÊô²ËÏµ, Íâ¼ü×Ö¶Î
-  price DOUBLE NOT NULL,		 -- ¼Û¸ñ
-  mprice DOUBLE NOT NULL,		 -- »áÔ±¼Û¸ñ
-  remark VARCHAR(200) NOT NULL,		 -- ¼ò½é
-  img VARCHAR(100) NOT NULL		 -- Í¼Æ¬
+  id VARCHAR(32) PRIMARY KEY NOT NULL,  -- ä¸»é”®
+  foodName VARCHAR(20) NOT NULL,	 -- èœåç§°
+  foodType_id VARCHAR(32) NOT NULL, 	 -- æ‰€å±èœç³», å¤–é”®å­—æ®µ
+  price DOUBLE NOT NULL,		 -- ä»·æ ¼
+  mprice DOUBLE NOT NULL,		 -- ä¼šå‘˜ä»·æ ¼
+  remark VARCHAR(200) NOT NULL,		 -- ç®€ä»‹
+  img VARCHAR(100) NOT NULL		 -- å›¾ç‰‡
 );
 
 
--- 6. ¶©µ¥±í      (¶©µ¥»ù±¾ĞÅÏ¢)
+-- 6. è®¢å•è¡¨      (è®¢å•åŸºæœ¬ä¿¡æ¯)
 CREATE TABLE orders(
-   id varchar(32) PRIMARY KEY NOT NULL,  -- Ö÷¼ü
-   table_id VARCHAR(32) NOT NULL,	-- Íâ¼ü£º ²Í×À±àºÅ
-   eatDate  VARCHAR(40) NOT NULL,	--¾Í²ÍÊ±¼ä
-   orderDate DATETIME,		       -- ÏÂµ¥ÈÕÆÚ
-   totalPrice DOUBLE,		       -- ¶©µ¥ËùÓĞ²ËĞèÒªµÄ×Ü½ğ¶î
-   orderStatus INT DEFAULT 0,           -- ¶©µ¥×´Ì¬£º 0,Î´½áÕË£» 1,ÒÑ½áÕË
-   user_id VARCHAR(32)	               -- Íâ¼ü£º ÓÃ»§±àºÅ
+   id VARCHAR(32) PRIMARY KEY NOT NULL,  -- ä¸»é”®
+   table_id VARCHAR(32) NOT NULL,	-- å¤–é”®ï¼š é¤æ¡Œç¼–å·
+   eatDate  VARCHAR(40) NOT NULL,	-- å°±é¤æ—¶é—´
+   orderDate DATETIME,		       -- ä¸‹å•æ—¥æœŸ
+   totalPrice DOUBLE,		       -- è®¢å•æ‰€æœ‰èœéœ€è¦çš„æ€»é‡‘é¢
+   orderStatus INT DEFAULT 0,           -- è®¢å•çŠ¶æ€ï¼š 0,æœªç»“è´¦ï¼› 1,å·²ç»“è´¦
+   user_id VARCHAR(32)	               -- å¤–é”®ï¼š ç”¨æˆ·ç¼–å·
 );
 
--- 7. ¶©µ¥Ã÷Ï¸±í  (Ö÷ÒªÊÇ²ËÆ·ÖÖ)
+-- 7. è®¢å•æ˜ç»†è¡¨  (ä¸»è¦æ˜¯èœå“ç§)
 CREATE TABLE orderDetail(
-   id varchar(32) PRIMARY KEY NOT NULL,  -- Ö÷¼ü
-   orderId VARCHAR(32) NOT NULL,	-- Íâ¼ü£ºÒıÈëµÄÊÇ¶©µ¥±íµÄÖ÷¼ü
-   food_id VARCHAR(32) NOT NULL,	-- Íâ¼ü£ºÒıÓÃµÄÊÇ²ËĞÅÏ¢±íµÄÖ÷¼ü
-   foodCount INT NOT NULL               -- ²ËµÄÊıÁ¿
+   id VARCHAR(32) PRIMARY KEY NOT NULL,  -- ä¸»é”®
+   orderId VARCHAR(32) NOT NULL,	-- å¤–é”®ï¼šå¼•å…¥çš„æ˜¯è®¢å•è¡¨çš„ä¸»é”®
+   food_id VARCHAR(32) NOT NULL,	-- å¤–é”®ï¼šå¼•ç”¨çš„æ˜¯èœä¿¡æ¯è¡¨çš„ä¸»é”®
+   foodCount INT NOT NULL               -- èœçš„æ•°é‡
    
 );
 
--- ²Í×ÀÃ÷Ï¸±í£º Óë²Í×À±íµÄ¹ØÏµ
-ALTER TABLE tableDetail ADD CONSTRAINT fk_tableDetail_table_id FOREIGN KEY(table_id) REFERENCES dinnertable(id) on delete restrict on update restrict;
--- Ìí¼Ó²ËÆ·Óë²ËÀà±ğµÄ¹ØÏµÔ¼Êø
-ALTER TABLE food ADD CONSTRAINT fk_food_foodType_id FOREIGN KEY(foodType_id) REFERENCES foodType(id) on delete restrict on update restrict;
--- ¶©µ¥±í£º Óë²Í×À±íµÄ¹ØÏµ
-ALTER TABLE orders ADD CONSTRAINT fk_order_table_id FOREIGN KEY(table_id) REFERENCES dinnertable(id) on delete restrict on update restrict;
--- ¶©µ¥±í£º ÓëÓÃ»§±íµÄ¹ØÏµ
-ALTER TABLE orders ADD CONSTRAINT fk_order_users_id FOREIGN KEY(user_id) REFERENCES users(id) on delete restrict on update restrict;
--- ¶©µ¥Ã÷Ï¸£º Óë¶©µ¥±íµÄ¹ØÏµ
-ALTER TABLE orderDetail ADD CONSTRAINT fk_orderDetail_order_id FOREIGN KEY(orderId) REFERENCES orders(id) on delete restrict on update restrict;
--- ¶©µ¥Ã÷Ï¸£º Óë²ËĞÅÏ¢µÄ¹ØÏµ
-ALTER TABLE orderDetail ADD CONSTRAINT fk_orderDetail_food_id FOREIGN KEY(food_id) REFERENCES food(id) on delete restrict on update restrict;
+-- é¤æ¡Œæ˜ç»†è¡¨ï¼š ä¸é¤æ¡Œè¡¨çš„å…³ç³»
+ALTER TABLE tableDetail ADD CONSTRAINT fk_tableDetail_table_id FOREIGN KEY(table_id) REFERENCES dinnertable(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+-- æ·»åŠ èœå“ä¸èœç±»åˆ«çš„å…³ç³»çº¦æŸ
+ALTER TABLE food ADD CONSTRAINT fk_food_foodType_id FOREIGN KEY(foodType_id) REFERENCES foodType(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+-- è®¢å•è¡¨ï¼š ä¸é¤æ¡Œè¡¨çš„å…³ç³»
+ALTER TABLE orders ADD CONSTRAINT fk_order_table_id FOREIGN KEY(table_id) REFERENCES dinnertable(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+-- è®¢å•è¡¨ï¼š ä¸ç”¨æˆ·è¡¨çš„å…³ç³»
+ALTER TABLE orders ADD CONSTRAINT fk_order_users_id FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+-- è®¢å•æ˜ç»†ï¼š ä¸è®¢å•è¡¨çš„å…³ç³»
+ALTER TABLE orderDetail ADD CONSTRAINT fk_orderDetail_order_id FOREIGN KEY(orderId) REFERENCES orders(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+-- è®¢å•æ˜ç»†ï¼š ä¸èœä¿¡æ¯çš„å…³ç³»
+ALTER TABLE orderDetail ADD CONSTRAINT fk_orderDetail_food_id FOREIGN KEY(food_id) REFERENCES food(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
